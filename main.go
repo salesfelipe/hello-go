@@ -1,11 +1,10 @@
 // Package: hello-package
 package main
 
-import (
-	"hello-go/cars"
-)
+import "hello-go/partyrobot"
 
 // Main do stuff
 func main() {
-	println(cars.CalculateCost(37))
+
+	println(partyrobot.AssignTable("Chihiro", 22, "Akachi Chikondi", "straight ahead", 9.2394381))
 }
