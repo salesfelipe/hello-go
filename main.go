@@ -1,10 +1,13 @@
 // Package: hello-package
 package main
 
-import "hello-go/partyrobot"
+import (
+	"fmt"
+	"hello-go/interest"
+)
 
 // Main do stuff
 func main() {
 
-	println(partyrobot.AssignTable("Chihiro", 22, "Akachi Chikondi", "straight ahead", 9.2394381))
+	fmt.Println(interest.YearsBeforeDesiredBalance(100, 125.8))
 }
