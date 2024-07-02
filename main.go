@@ -3,11 +3,18 @@ package main
 
 import (
 	"fmt"
-	"hello-go/gross"
+	"hello-go/electionday"
 )
 
 // Main do stuff
 func main() {
+	var finalResults = map[string]int{
+		"Mary": 10,
+		"John": 51,
+	}
 
-	fmt.Println(gross.Units())
+	electionday.DecrementVotesOfCandidate(finalResults, "Mary")
+
+	fmt.Println(finalResults["Mary"])
+
 }
