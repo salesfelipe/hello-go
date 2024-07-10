@@ -3,16 +3,10 @@ package main
 
 import (
 	"fmt"
-	"hello-go/parsinglogfiles"
+	"hello-go/twofer"
 )
 
 // Main do stuff
 func main() {
-	fmt.Println(parsinglogfiles.CountQuotedPasswords([]string{
-		``,
-		`[INF] passWord`,
-		`"passWord"`,
-		`[INF] User saw error message "Unexpected Error" on page load.`,
-		`[INF] The message "Please reset your password" was ignored by the user`,
-	}))
+	fmt.Println(twofer.ShareWith("adasda"))
 }
