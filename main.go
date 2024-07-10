@@ -3,10 +3,10 @@ package main
 
 import (
 	"fmt"
-	"hello-go/twofer"
+	"hello-go/raindrops"
 )
 
 // Main do stuff
 func main() {
-	fmt.Println(twofer.ShareWith("adasda"))
+	fmt.Println(raindrops.Convert(14))
 }
