@@ -3,10 +3,10 @@ package main
 
 import (
 	"fmt"
-	"hello-go/raindrops"
+	"hello-go/collatzconjecture"
 )
 
 // Main do stuff
 func main() {
-	fmt.Println(raindrops.Convert(14))
+	fmt.Println(collatzconjecture.CollatzConjecture(0))
 }
