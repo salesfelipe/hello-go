@@ -3,10 +3,11 @@ package main
 
 import (
 	"fmt"
-	"hello-go/collatzconjecture"
+	"hello-go/gigasecond"
+	"time"
 )
 
 // Main do stuff
 func main() {
-	fmt.Println(collatzconjecture.CollatzConjecture(0))
+	fmt.Println(gigasecond.AddGigasecond(time.Date(2015, 1, 24, 22, 0, 0, 0, time.UTC)))
 }
