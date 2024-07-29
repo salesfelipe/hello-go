@@ -2,11 +2,28 @@
 package main
 
 import (
-	"fmt"
-	"hello-go/wordy"
+	"hello-go/leetmicrosoft"
 )
 
 // Main do stuff
 func main() {
-	fmt.Println(wordy.Answer("What is 52 cubed?"))
+	first := leetmicrosoft.Node{
+		Val: 1,
+	}
+
+	second := leetmicrosoft.Node{
+		Val: 2,
+	}
+
+	third := leetmicrosoft.Node{
+		Val: 3,
+	}
+
+	first.Next = &second
+	first.Random = &third
+	second.Next = &third
+
+	copyH := leetmicrosoft.CopyRandomList(&first)
+
+	println(copyH.Val, first.Val, copyH.Next.Val, first.Next.Val)
 }
