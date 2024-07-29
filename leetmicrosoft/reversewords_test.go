@@ -10,7 +10,9 @@ type Case struct {
 }
 
 var cases []Case = []Case{
-	{input: "the sky is blue", expect: "blue is sky the"},
+	{input: "the    sky is blue", expect: "blue is sky the"},
+	{input: "  hello world  ", expect: "world hello"},
+	{input: "a good   example", expect: "example good a"},
 }
 
 func TestReverse(t *testing.T) {
@@ -19,7 +21,7 @@ func TestReverse(t *testing.T) {
 		result := reverseWords(currTest.input)
 
 		if result != currTest.expect {
-			t.Fatalf(`TestReverse = input: %s, response: %s | want: %s`, currTest.input, result, currTest.expect)
+			t.Errorf(`TestReverse = input: %s, response: %s | want: %s`, currTest.input, result, currTest.expect)
 		}
 	}
 }
