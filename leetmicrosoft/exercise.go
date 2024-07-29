@@ -10,6 +10,10 @@ type Node struct {
 	Random *Node
 }
 
+func getKey(node *Node) string {
+	return fmt.Sprintf("%p", node)
+}
+
 func dequeue(queue []*Node) (*Node, []*Node) {
 	item := queue[0]
 	if len(queue) == 1 {
@@ -23,21 +27,24 @@ func CopyRandomList(head *Node) *Node {
 	if head == nil {
 		return nil
 	}
-	copiedNodes := make(map[int]*Node)
+	copiedNodes := make(map[string]*Node)
 
 	// Shallow  copy
 	queue := make([]*Node, 0)
 	queue = append(queue, head)
+
+	// a := fmt.Stringer(head.Next)
 	for len(queue) > 0 {
 		currentNode, q := dequeue(queue)
+		nodeKey := getKey(currentNode)
 
 		queue = q
 
-		_, ok := copiedNodes[currentNode.Val]
+		_, ok := copiedNodes[nodeKey]
 
 		if !ok {
 			copy := Node{Val: currentNode.Val}
-			copiedNodes[currentNode.Val] = &copy
+			copiedNodes[nodeKey] = &copy
 
 			if currentNode.Next != nil {
 				queue = append(queue, currentNode.Next)
@@ -52,11 +59,13 @@ func CopyRandomList(head *Node) *Node {
 	for len(deepyCopyQ) > 0 {
 		currentNode, q := dequeue(deepyCopyQ)
 		deepyCopyQ = q
+		currentKey := getKey(currentNode)
 
-		currentNodeCopy, currCopyOk := copiedNodes[currentNode.Val]
+		currentNodeCopy, currCopyOk := copiedNodes[currentKey]
 
 		if currentNode.Next != nil {
-			nextNodeCopy, nextCopyOk := copiedNodes[currentNode.Next.Val]
+			nextKey := getKey(currentNode.Next)
+			nextNodeCopy, nextCopyOk := copiedNodes[nextKey]
 
 			if currCopyOk && nextCopyOk {
 				currentNodeCopy.Next = nextNodeCopy
@@ -68,7 +77,8 @@ func CopyRandomList(head *Node) *Node {
 		}
 
 		if currentNode.Random != nil {
-			randomNodeCopy, randomCopyOk := copiedNodes[currentNode.Random.Val]
+			randomKey := getKey(currentNode.Random)
+			randomNodeCopy, randomCopyOk := copiedNodes[randomKey]
 
 			if currCopyOk && randomCopyOk {
 				currentNodeCopy.Random = randomNodeCopy
@@ -76,21 +86,18 @@ func CopyRandomList(head *Node) *Node {
 		}
 	}
 
-	return copiedNodes[head.Val]
+	return copiedNodes[getKey(head)]
 }
 
 func TraverseNPrint(head *Node) {
-	queue := make([]*Node, 0)
-	queue = append(queue, head)
-	for len(queue) > 0 {
-		currentNode, q := dequeue(queue)
-		queue = q
 
+	var currentNode *Node = head
+
+	for currentNode.Next != nil {
 		printNode(currentNode)
+		printNode(currentNode.Next)
 
-		if currentNode.Next != nil {
-			queue = append(queue, currentNode.Next)
-		}
+		currentNode = currentNode.Next
 	}
 
 }

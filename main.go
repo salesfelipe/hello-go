@@ -7,23 +7,18 @@ import (
 
 // Main do stuff
 func main() {
+	// [[7,null],[13,0],[11,4],[10,2],[1,0]]
 	first := leetmicrosoft.Node{
-		Val: 1,
+		Val: 3,
 	}
 
 	second := leetmicrosoft.Node{
-		Val: 2,
-	}
-
-	third := leetmicrosoft.Node{
 		Val: 3,
 	}
 
 	first.Next = &second
-	first.Random = &third
-	second.Next = &third
 
 	copyH := leetmicrosoft.CopyRandomList(&first)
 
-	println(copyH.Val, first.Val, copyH.Next.Val, first.Next.Val)
+	leetmicrosoft.TraverseNPrint(copyH)
 }
