@@ -39,6 +39,7 @@ func (q *Queue) Dequeue() int {
 	lastItemAdded := q.head
 
 	q.head = lastItemAdded.next
+	q.head.prev = nil
 	q.length -= 1
 
 	return lastItemAdded.value
@@ -100,9 +101,8 @@ func (l *LRUCache) Put(key int, value int) {
 }
 
 func (l *LRUCache) visit(key int) {
-
 	// is last access
-	if l.queue.length > 0 && l.queue.tail != nil && l.queue.tail.value == key {
+	if l.queue.tail != nil && l.queue.tail.value == key {
 		return
 	}
 
