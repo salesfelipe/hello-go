@@ -33,7 +33,7 @@ func spiralOrder(matrix [][]int) []int {
 			direction = changeDirection(direction)
 		} else {
 			visitCount++
-			visitedValues = append(visitedValues, matrix[currentPosition.x][currentPosition.y])
+			visitedValues = append(visitedValues, matrix[currentPosition.y][currentPosition.x])
 		}
 	}
 
@@ -50,13 +50,13 @@ func navigate(
 
 	switch direction {
 	case "right":
-		newPosition.y = newPosition.y + 1
-	case "left":
-		newPosition.y = newPosition.y - 1
-	case "up":
-		newPosition.x = newPosition.x - 1
-	case "down":
 		newPosition.x = newPosition.x + 1
+	case "left":
+		newPosition.x = newPosition.x - 1
+	case "up":
+		newPosition.y = newPosition.y - 1
+	case "down":
+		newPosition.y = newPosition.y + 1
 	}
 
 	isVisited := checkVisited(newPosition, visits)
@@ -71,12 +71,12 @@ func navigate(
 		return newPosition, nil
 	}
 
-	return currentPosition, fmt.Errorf("Can't navigate anymore")
+	return currentPosition, fmt.Errorf("can't navigate anymore")
 }
 
 func (c *Coordinate) getKey() string {
 
-	key := fmt.Sprintf("%d,%d", c.x, c.y)
+	key := fmt.Sprintf("%d,%d", c.y, c.x)
 
 	return key
 }
