@@ -15,6 +15,7 @@ var casesAddTw []CaseAddTw = []CaseAddTw{
 	{inputL1: []int{2, 4, 3}, inputL2: []int{5, 6, 4}, expect: []int{7, 0, 8}},
 	{inputL1: []int{0}, inputL2: []int{0}, expect: []int{0}},
 	{inputL1: []int{9, 9, 9, 9, 9, 9, 9}, inputL2: []int{9, 9, 9, 9}, expect: []int{8, 9, 9, 9, 0, 0, 0, 1}},
+	{inputL1: []int{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, inputL2: []int{5, 6, 4}, expect: []int{6, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}},
 }
 
 func TestAddTwoSum(t *testing.T) {
@@ -28,7 +29,7 @@ func TestAddTwoSum(t *testing.T) {
 		resultArray := extractListValues(result)
 
 		if !reflect.DeepEqual(resultArray, currTest.expect) {
-			t.Errorf(`TestReverse = input: %v, response: %v | want: %v`, currTest.inputL1, resultArray, currTest.expect)
+			t.Errorf(`TestAddTwoSum = input: %v, response: %v | want: %v`, currTest.inputL1, resultArray, currTest.expect)
 		}
 	}
 }
